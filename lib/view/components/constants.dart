@@ -11,7 +11,7 @@ final BoxDecoration kDarkGradientContainer = BoxDecoration(
     gradient: LinearGradient(
         begin: Alignment.bottomCenter,
         end: Alignment.topCenter,
-        colors: [kDarkPurple, kDarkPink]));
+        colors: [kDarkPink, kDarkPurple]));
 
 //RADIUS
 const Radius kBoxRadius = Radius.circular(20);
