@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Market Easy Test',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
       home: SignIn(),
-      routes: {'/showProduts': (constext) => ShowProducts()},
+      routes: {'/showProducts': (context) => ShowProducts()},
     );
   }
 }
