@@ -15,8 +15,12 @@ class ShowProducts extends StatelessWidget {
             alignment: Alignment.bottomRight,
             height: height * 0.12,
             child: IconButton(
-              icon: Icon(Icons.close_rounded, color: kNeonBlue, size: 26,),
-              onPressed: (){
+              icon: Icon(
+                Icons.close_rounded,
+                color: kNeonBlue,
+                size: 26,
+              ),
+              onPressed: () {
                 Navigator.pop(context);
               },
             ),
@@ -24,8 +28,7 @@ class ShowProducts extends StatelessWidget {
           SizedBox(
             height: height * 0.71,
             child: ListView(
-              children: [
-              ],
+              children: [],
             ),
           ),
           Container(
@@ -42,7 +45,11 @@ class ShowProducts extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: kDarkPink,
         onPressed: () {},
-        child: Icon(Icons.list_alt_rounded, size: 30, color: kLightPrimaryColor,),
+        child: Icon(
+          Icons.list_alt_rounded,
+          size: 30,
+          color: kLightPrimaryColor,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
