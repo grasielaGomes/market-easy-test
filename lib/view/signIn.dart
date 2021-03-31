@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mkt_easy_test/controller/api_controller.dart';
+//import 'package:mkt_easy_test/controller/api_controller.dart';
 import 'package:mkt_easy_test/view/components/constants.dart';
 import 'package:mkt_easy_test/view/components/formSignIn.dart';
-import 'package:mkt_easy_test/view/components/roundButton.dart';
 import 'components/iconSignIn.dart';
 
 class SignIn extends StatefulWidget {
@@ -21,11 +20,11 @@ class _SignInState extends State<SignIn> {
 
   String accessToken = '';
 
-  void _getAccessToken() async {
+  /*void _getAccessToken() async {
     final apiController = APIController();
     final token = await apiController.getAccessToken();
     setState(() => accessToken = token);
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class _SignInState extends State<SignIn> {
           height: height,
           padding: EdgeInsets.symmetric(
               horizontal: width * 0.1, vertical: width * 0.15),
-          margin: EdgeInsets.only(top: height * 0.1),
+          margin: EdgeInsets.only(top: height * 0.08),
           decoration: kDarkGradientContainer,
           child: Column(
             children: [
@@ -48,15 +47,6 @@ class _SignInState extends State<SignIn> {
                 padding: EdgeInsets.symmetric(vertical: height * 0.07),
                 child: FormSignIn(),
               ),
-              RoundButton(
-                  color: kPrimaryColor,
-                  text: kButtonSignIn.toUpperCase(),
-                  onTap: () {
-                    _getAccessToken();
-                    print(accessToken);
-                    //Navigator.pushNamed(context, '/showProducts');
-                  }),
-              SizedBox(height: height * 0.05),
               Text(
                 kForgotPasswordSignIn,
                 style: kSBodyStyle,

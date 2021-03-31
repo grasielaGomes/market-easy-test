@@ -30,11 +30,18 @@ final String kUserSignIn = 'Usuário';
 final String kPasswordSignIn = 'Senha';
 final String kButtonSignIn = 'Entrar';
 final String kForgotPasswordSignIn = 'Esqueci minha senha';
+final String kEntryMandatory = 'Campo obrigatório';
+final String kShortPassword = 'Senha muito curta';
 
 //TEXTS PRODUCTS LIST
 final String kInstructionShowProducts = 'Milhares de produtos disponíveis. Clique no ícone abaixo para listá-los.';
 
 //TEXTSTYLES
+const TextStyle kErrorStyle = TextStyle(
+    color: kNeonBlue,
+    fontSize: 11
+);
+
 const TextStyle kLabelStyle = TextStyle(
     color: kLightPrimaryColor,
     fontSize: 13
