@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mkt_easy_test/controller/api_controller.dart';
 import 'package:mkt_easy_test/view/components/constants.dart';
 import 'package:mkt_easy_test/view/components/inputText.dart';
 import 'package:mkt_easy_test/view/components/roundButton.dart';
+import 'package:provider/provider.dart';
 
 class FormSignIn extends StatelessWidget {
   final TextEditingController _user = TextEditingController();
@@ -12,13 +14,14 @@ class FormSignIn extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height * 0.4,
-      child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(kInstructionSignIn, style: kSubtitleStyle),
-              InputTextRound(
+      child: Consumer<APIController>(builder: (_, apiController, __){
+        return Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(kInstructionSignIn, style: kSubtitleStyle),
+                InputTextRound(
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return kEntryMandatory;
@@ -28,8 +31,8 @@ class FormSignIn extends StatelessWidget {
                   label: kUserSignIn,
                   icon: Icons.person_outline_rounded,
                   controller: _user,
-              ),
-              InputTextRound(
+                ),
+                InputTextRound(
                   validator: (String? value){
                     if (value!.isEmpty){
                       return kEntryMandatory;
@@ -41,20 +44,21 @@ class FormSignIn extends StatelessWidget {
                   icon: Icons.lock_outline,
                   controller: _password,
                   obscure: true,
-              ),
-              SizedBox(height: height * 0.01),
-              RoundButton(
-                  color: kPrimaryColor,
-                  text: kButtonSignIn.toUpperCase(),
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      String user = _user.text;
-                      String password = _password.text;
-                      print('usuário: $user senha: $password');
-                    }
-                  }),
-            ],
-      )),
+                ),
+                SizedBox(height: height * 0.01),
+                RoundButton(
+                    color: kPrimaryColor,
+                    text: kButtonSignIn.toUpperCase(),
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        apiController.paramsToMap(
+                            userValue:_user.text,
+                            passwordValue:_password.text);
+                      }
+                    }),
+              ],
+            ));
+      }),
     );
   }
 
