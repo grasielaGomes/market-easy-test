@@ -58,7 +58,8 @@ const TextStyle kSubtitleStyle = TextStyle(
     color: kLightPrimaryColor,
 );
 
-const TextStyle kSBodyStyle = TextStyle(
+
+const TextStyle kBodyStyle = TextStyle(
   fontSize: 14,
   color: kLightPrimaryColor,
   height: 1.2
@@ -68,6 +69,22 @@ const TextStyle kButtonStyle = TextStyle(
   fontSize: 13,
   letterSpacing: 3,
   color: Colors.white,
+);
+
+const TextStyle kProductStyle = TextStyle(
+  fontSize: 17,
+  color: kNeonBlue,
+);
+
+const TextStyle kPriceStyle = TextStyle(
+  fontSize: 20,
+  color: kDarkPink,
+  fontWeight: FontWeight.bold
+);
+
+const TextStyle kCodeStyle = TextStyle(
+    color: kLightPrimaryColor,
+    fontSize: 11
 );
 
 

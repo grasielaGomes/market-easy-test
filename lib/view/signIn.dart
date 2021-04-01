@@ -43,7 +43,7 @@ class _SignInState extends State<SignIn> {
               ),
               Text(
                 kForgotPasswordSignIn,
-                style: kSBodyStyle,
+                style: kBodyStyle,
               ),
             ],
           ),

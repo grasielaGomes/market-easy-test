@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mkt_easy_test/controller/api_controller.dart';
+import 'package:mkt_easy_test/controller/authController.dart';
 import 'package:mkt_easy_test/view/components/constants.dart';
 import 'package:mkt_easy_test/view/components/inputText.dart';
 import 'package:mkt_easy_test/view/components/roundButton.dart';
@@ -15,7 +15,7 @@ class FormSignIn extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height * 0.4,
-      child: Consumer<APIController>(builder: (_, apiController, __){
+      child: Consumer<AuthController>(builder: (_, apiController, __){
         return Form(
             key: _formKey,
             child: Column(
@@ -57,12 +57,14 @@ class FormSignIn extends StatelessWidget {
                       String response = await apiController.getAccessToken();
                       if(response == 'ok'){
                         Navigator.pushNamed(context, '/showProducts');
+                        _user.clear();
+                        _password.clear();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               backgroundColor: kDarkestColor,
                                 content: Text(apiController.error,
-                                  style: kSBodyStyle,
+                                  style: kBodyStyle,
                                   textAlign: TextAlign.center,)
                             ));
                       }
