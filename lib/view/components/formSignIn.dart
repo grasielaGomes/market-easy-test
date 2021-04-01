@@ -6,6 +6,7 @@ import 'package:mkt_easy_test/view/components/roundButton.dart';
 import 'package:provider/provider.dart';
 
 class FormSignIn extends StatelessWidget {
+
   final TextEditingController _user = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -49,13 +50,28 @@ class FormSignIn extends StatelessWidget {
                 RoundButton(
                     color: kPrimaryColor,
                     text: kButtonSignIn.toUpperCase(),
-                    onTap: () {
+                    onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        apiController.paramsToMap(
-                            userValue:_user.text,
+                       apiController.paramsToMap(userValue:_user.text,
                             passwordValue:_password.text);
+                      String response = await apiController.getAccessToken();
+                      if(response == 'ok'){
+                        Navigator.pushNamed(context, '/showProducts');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: kDarkestColor,
+                                content: Text(apiController.error,
+                                  style: kSBodyStyle,
+                                  textAlign: TextAlign.center,)
+                            ));
+                      }
                       }
                     }),
+                if(apiController.loading)
+                  LinearProgressIndicator(
+                    backgroundColor: kNeonBlue,
+                  )
               ],
             ));
       }),

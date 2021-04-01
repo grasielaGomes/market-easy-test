@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:mkt_easy_test/controller/api_controller.dart';
 import 'package:mkt_easy_test/view/components/constants.dart';
 import 'package:mkt_easy_test/view/components/formSignIn.dart';
 import 'components/iconSignIn.dart';
@@ -18,19 +17,14 @@ class _SignInState extends State<SignIn> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
 
-  String accessToken = '';
-
-  /*void _getAccessToken() async {
-    final apiController = APIController();
-    final token = await apiController.getAccessToken();
-    setState(() => accessToken = token);
-  }*/
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: Container(
@@ -50,7 +44,7 @@ class _SignInState extends State<SignIn> {
               Text(
                 kForgotPasswordSignIn,
                 style: kSBodyStyle,
-              )
+              ),
             ],
           ),
         ),
