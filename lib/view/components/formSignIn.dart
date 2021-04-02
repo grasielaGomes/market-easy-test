@@ -15,7 +15,7 @@ class FormSignIn extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height * 0.4,
-      child: Consumer<AuthController>(builder: (_, apiController, __){
+      child: Consumer<AuthController>(builder: (_, authController, __){
         return Form(
             key: _formKey,
             child: Column(
@@ -52,9 +52,9 @@ class FormSignIn extends StatelessWidget {
                     text: kButtonSignIn.toUpperCase(),
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                       apiController.paramsToMap(userValue:_user.text,
+                       authController.paramsToMap(userValue:_user.text,
                             passwordValue:_password.text);
-                      String response = await apiController.getAccessToken();
+                      String response = await authController.getAccessToken();
                       if(response == 'ok'){
                         Navigator.pushNamed(context, '/showProducts');
                         _user.clear();
@@ -63,14 +63,14 @@ class FormSignIn extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               backgroundColor: kDarkestColor,
-                                content: Text(apiController.message,
+                                content: Text(authController.message,
                                   style: kBodyStyle,
                                   textAlign: TextAlign.center,)
                             ));
                       }
                       }
                     }),
-                if(apiController.loading)
+                if(authController.loading)
                   LinearProgressIndicator(
                     backgroundColor: kNeonBlue,
                   )

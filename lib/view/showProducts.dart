@@ -27,7 +27,7 @@ class _ShowProductsState extends State<ShowProducts> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Consumer<ProductController>(builder: (_, apiController, __){
+    return Consumer<ProductController>(builder: (_, productController, __){
       return Scaffold(
         backgroundColor: kPrimaryColor,
         body: Column(
@@ -46,19 +46,19 @@ class _ShowProductsState extends State<ShowProducts> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                  apiController.products.clear();
+                  productController.products.clear();
                 },
               ),
             ),
 
             //PRODUCTS LIST
-            if(apiController.products.isNotEmpty && apiController.message == 'ok')
+            if(productController.products.isNotEmpty && productController.message == 'ok')
             Flexible(
               child: ListView.builder(
                   padding: EdgeInsets.zero,
-                  itemCount: apiController.products.length,
+                  itemCount: productController.products.length,
                   itemBuilder: (context, index){
-                    Product product = apiController.products[index];
+                    Product product = productController.products[index];
                     return Card(
                       margin: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: width * 0.025),
                       color: kDarkestColor,
@@ -85,17 +85,17 @@ class _ShowProductsState extends State<ShowProducts> {
             ),
 
             //MESSAGE ERROR
-            if(apiController.message != 'ok')
+            if(productController.message != 'ok')
               Flexible(
                 child: Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: width * 0.1),
-                  child: Text(apiController.message, style: kBodyStyle),
+                  child: Text(productController.message, style: kBodyStyle),
                 ),
               ),
 
             //LOADING
-            if(apiController.loading)
+            if(productController.loading)
               Flexible(
                   child: Center(
                     child: CircularProgressIndicator(
@@ -104,7 +104,7 @@ class _ShowProductsState extends State<ShowProducts> {
                   )),
 
             //INSTRUCTIONS
-            if(apiController.products.isEmpty && !apiController.loading && apiController.message.isEmpty)
+            if(productController.products.isEmpty && !productController.loading && productController.message.isEmpty)
             Flexible(
               child: Container(
                 alignment: Alignment.bottomCenter,
@@ -125,7 +125,7 @@ class _ShowProductsState extends State<ShowProducts> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: kDarkPink,
           onPressed: () async {
-           final products = await apiController.getProducts();
+           final products = await productController.getProducts();
            print(products.length);
           },
           child: Icon(
