@@ -47,7 +47,6 @@ class AuthController extends ChangeNotifier{
         accessToken = data['response']['token'];
         User.fromJson(accessToken);
         message = 'ok';
-        print(data);
         notifyListeners();
       } else {
         message = data['response']['messages'][0]['message'];

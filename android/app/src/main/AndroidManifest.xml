@@ -2,7 +2,7 @@
     package="com.example.mkt_easy_test">
    <application
         android:label="mkt_easy_test"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

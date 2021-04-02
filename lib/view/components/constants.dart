@@ -21,7 +21,7 @@ const Radius kBoxRadius = Radius.circular(20);
 final double kInputRadius = 30;
 
 //ASSETS
-final String kIconSignIn = 'assets/icon1a.png';
+final String kIconSignIn = 'assets/icon1.png';
 
 //TEXTS SIGNIN
 final String kHiSignIn = 'Olá!';
@@ -34,36 +34,25 @@ final String kEntryMandatory = 'Campo obrigatório';
 final String kShortPassword = 'Senha muito curta';
 
 //TEXTS PRODUCTS LIST
-final String kInstructionShowProducts = 'Milhares de produtos disponíveis. Clique no ícone abaixo para listá-los.';
+final String kInstructionShowProducts =
+    'Milhares de produtos disponíveis. Clique no ícone abaixo para listá-los.';
 
 //TEXTSTYLES
-const TextStyle kErrorStyle = TextStyle(
-    color: kNeonBlue,
-    fontSize: 11
-);
+const TextStyle kErrorStyle = TextStyle(color: kNeonBlue, fontSize: 11);
 
-const TextStyle kLabelStyle = TextStyle(
-    color: kLightPrimaryColor,
-    fontSize: 13
-);
+const TextStyle kLabelStyle =
+    TextStyle(color: kLightPrimaryColor, fontSize: 13);
 
 const TextStyle kTitleStyle = TextStyle(
-  fontSize: 50,
-  color: kLightPrimaryColor,
-  fontWeight: FontWeight.bold
-);
+    fontSize: 50, color: kLightPrimaryColor, fontWeight: FontWeight.bold);
 
 const TextStyle kSubtitleStyle = TextStyle(
-    fontSize: 15,
-    color: kLightPrimaryColor,
-);
-
-
-const TextStyle kBodyStyle = TextStyle(
-  fontSize: 14,
+  fontSize: 15,
   color: kLightPrimaryColor,
-  height: 1.2
 );
+
+const TextStyle kBodyStyle =
+    TextStyle(fontSize: 14, color: kLightPrimaryColor, height: 1.2);
 
 const TextStyle kButtonStyle = TextStyle(
   fontSize: 13,
@@ -76,28 +65,19 @@ const TextStyle kProductStyle = TextStyle(
   color: kNeonBlue,
 );
 
-const TextStyle kPriceStyle = TextStyle(
-  fontSize: 20,
-  color: kDarkPink,
-  fontWeight: FontWeight.bold
-);
+const TextStyle kPriceStyle =
+    TextStyle(fontSize: 20, color: kDarkPink, fontWeight: FontWeight.bold);
 
-const TextStyle kCodeStyle = TextStyle(
-    color: kLightPrimaryColor,
-    fontSize: 11
-);
-
+const TextStyle kCodeStyle = TextStyle(color: kLightPrimaryColor, fontSize: 11);
 
 //INPUTDECORATIONS
 final OutlineInputBorder kEnabledBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(kInputRadius),
-    borderSide: const BorderSide(width: 0.5, color: kLightPrimaryColor)
-);
+    borderSide: const BorderSide(width: 0.5, color: kLightPrimaryColor));
 
 final OutlineInputBorder kFocusedBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(kInputRadius),
-    borderSide: const BorderSide(color: kLightPrimaryColor)
-);
+    borderSide: const BorderSide(color: kLightPrimaryColor));
 
 final OutlineInputBorder kErrorBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(kInputRadius),
@@ -112,4 +92,3 @@ final OutlineInputBorder kDisabledBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(kInputRadius),
   borderSide: const BorderSide(width: 0.2, color: kShadow),
 );
-

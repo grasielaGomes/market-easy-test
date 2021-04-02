@@ -5,10 +5,18 @@ import 'package:mkt_easy_test/view/components/inputText.dart';
 import 'package:mkt_easy_test/view/components/roundButton.dart';
 import 'package:provider/provider.dart';
 
-class FormSignIn extends StatelessWidget {
+class FormSignIn extends StatefulWidget {
+  @override
+  _FormSignInState createState() => _FormSignInState();
+}
+
+class _FormSignInState extends State<FormSignIn> {
   final TextEditingController _user = TextEditingController();
+
   final TextEditingController _password = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -18,7 +26,7 @@ class FormSignIn extends StatelessWidget {
         return Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(kInstructionSignIn, style: kSubtitleStyle),
                 InputTextRound(
@@ -45,7 +53,7 @@ class FormSignIn extends StatelessWidget {
                   controller: _password,
                   obscure: true,
                 ),
-                SizedBox(height: height * 0.01),
+                //SizedBox(height: height * 0.01),
                 RoundButton(
                     color: kPrimaryColor,
                     text: kButtonSignIn.toUpperCase(),

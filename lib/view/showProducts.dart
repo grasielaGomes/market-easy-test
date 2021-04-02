@@ -97,10 +97,8 @@ class _ShowProductsState extends State<ShowProducts> {
             //LOADING
             if(productController.loading)
               Flexible(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: kNeonBlue,
-                    ),
+                  child: CircularProgressIndicator(
+                    backgroundColor: kNeonBlue,
                   )),
 
             //INSTRUCTIONS
@@ -125,8 +123,7 @@ class _ShowProductsState extends State<ShowProducts> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: kDarkPink,
           onPressed: () async {
-           final products = await productController.getProducts();
-           print(products.length);
+           await productController.getProducts();
           },
           child: Icon(
             Icons.list_alt_rounded,
