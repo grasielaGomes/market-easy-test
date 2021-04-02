@@ -32,13 +32,12 @@ class _SignInState extends State<SignIn> {
           height: height,
           padding: EdgeInsets.symmetric(
               horizontal: width * 0.1, vertical: width * 0.15),
-          margin: EdgeInsets.only(top: height * 0.08),
           decoration: kDarkGradientContainer,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconSignIn(),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: height * 0.07),
+              Flexible(
                 child: FormSignIn(),
               ),
               Text(

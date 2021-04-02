@@ -6,7 +6,6 @@ import 'package:mkt_easy_test/view/components/roundButton.dart';
 import 'package:provider/provider.dart';
 
 class FormSignIn extends StatelessWidget {
-
   final TextEditingController _user = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -15,11 +14,11 @@ class FormSignIn extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height * 0.4,
-      child: Consumer<AuthController>(builder: (_, authController, __){
+      child: Consumer<AuthController>(builder: (_, authController, __) {
         return Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(kInstructionSignIn, style: kSubtitleStyle),
                 InputTextRound(
@@ -34,10 +33,10 @@ class FormSignIn extends StatelessWidget {
                   controller: _user,
                 ),
                 InputTextRound(
-                  validator: (String? value){
-                    if (value!.isEmpty){
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
                       return kEntryMandatory;
-                    } else if (value.length < 6){
+                    } else if (value.length < 6) {
                       return kShortPassword;
                     }
                   },
@@ -52,25 +51,26 @@ class FormSignIn extends StatelessWidget {
                     text: kButtonSignIn.toUpperCase(),
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                       authController.paramsToMap(userValue:_user.text,
-                            passwordValue:_password.text);
-                      String response = await authController.getAccessToken();
-                      if(response == 'ok'){
-                        Navigator.pushNamed(context, '/showProducts');
-                        _user.clear();
-                        _password.clear();
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                        authController.paramsToMap(
+                            userValue: _user.text,
+                            passwordValue: _password.text);
+                        String response = await authController.getAccessToken();
+                        if (response == 'ok') {
+                          Navigator.pushNamed(context, '/showProducts');
+                          _user.clear();
+                          _password.clear();
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: kDarkestColor,
-                                content: Text(authController.message,
-                                  style: kBodyStyle,
-                                  textAlign: TextAlign.center,)
-                            ));
-                      }
+                              content: Text(
+                                authController.message,
+                                style: kBodyStyle,
+                                textAlign: TextAlign.center,
+                              )));
+                        }
                       }
                     }),
-                if(authController.loading)
+                if (authController.loading)
                   LinearProgressIndicator(
                     backgroundColor: kNeonBlue,
                   )
@@ -79,5 +79,4 @@ class FormSignIn extends StatelessWidget {
       }),
     );
   }
-
 }
