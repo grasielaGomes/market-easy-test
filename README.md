@@ -1,16 +1,23 @@
-# mkt_easy_test
-
-A new Flutter project.
-
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Flutter version: 2.0.3
+Dart version: 3.21.1
 
-A few resources to get you started if this is your first Flutter project:
+Download this Flutter project and open it in your favorite code editor;
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+In SignIn screen:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- you will be authenticated with user: 100000 and password: 123456;
+- if you try another data an error message will appear in a snack bar.
+
+In Products screen:
+
+- click in the floating button to access a list of products;
+- if, for some reason, your token is invalid, an error message will appear;
+- if you have a valid token, a scroll list will appear with the following informations:
+    - Product description;
+    - Product price;
+    - Product code bar;
+    - Product internal code.
+- your token expires in 2 hours and 55 minutes. After that, you will sent to sigin screen.
+- if your tap the close button you will return to signin screen.
