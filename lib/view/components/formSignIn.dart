@@ -63,7 +63,7 @@ class FormSignIn extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               backgroundColor: kDarkestColor,
-                                content: Text(apiController.error,
+                                content: Text(apiController.message,
                                   style: kBodyStyle,
                                   textAlign: TextAlign.center,)
                             ));

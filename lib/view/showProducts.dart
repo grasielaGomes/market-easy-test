@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:mkt_easy_test/controller/productController.dart';
@@ -5,7 +7,21 @@ import 'package:mkt_easy_test/model/product.dart';
 import 'package:mkt_easy_test/view/components/constants.dart';
 import 'package:provider/provider.dart';
 
-class ShowProducts extends StatelessWidget {
+class ShowProducts extends StatefulWidget {
+
+  @override
+  _ShowProductsState createState() => _ShowProductsState();
+}
+
+class _ShowProductsState extends State<ShowProducts> {
+
+  //RETURN SIGNIN AFTER TOKEN EXPIRATION
+  _ShowProductsState(){
+    Timer _timer = Timer(Duration(hours: 2, minutes: 55), () {
+      Navigator.pop(context);
+    }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +52,7 @@ class ShowProducts extends StatelessWidget {
             ),
 
             //PRODUCTS LIST
-            if(apiController.products.isNotEmpty)
+            if(apiController.products.isNotEmpty && apiController.message == 'ok')
             Flexible(
               child: ListView.builder(
                   padding: EdgeInsets.zero,
@@ -68,6 +84,16 @@ class ShowProducts extends StatelessWidget {
                   }),
             ),
 
+            //MESSAGE ERROR
+            if(apiController.message != 'ok')
+              Flexible(
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                  child: Text(apiController.message, style: kBodyStyle),
+                ),
+              ),
+
             //LOADING
             if(apiController.loading)
               Flexible(
@@ -78,7 +104,7 @@ class ShowProducts extends StatelessWidget {
                   )),
 
             //INSTRUCTIONS
-            if(apiController.products.isEmpty && !apiController.loading)
+            if(apiController.products.isEmpty && !apiController.loading && apiController.message.isEmpty)
             Flexible(
               child: Container(
                 alignment: Alignment.bottomCenter,

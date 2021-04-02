@@ -11,11 +11,11 @@ class ProductController extends ChangeNotifier{
   final API api = API();
   final AuthController authController = AuthController();
 
-  String error = '';
+  String message = '';
   bool loading = false;
   List<Product> products = [];
 
-  Future<List<Product>> getProducts() async {
+  Future<String> getProducts() async {
     loading = true;
     notifyListeners();
 
@@ -29,6 +29,7 @@ class ProductController extends ChangeNotifier{
       Map data = json.decode(responseGet.body);
       String status = data['response']['status'];
       if(status == 'ok'){
+        message = 'ok';
         List _products = data['response']['produtos'];
         for(Map<String, dynamic> json in _products){
           Product p = Product.fromJson(json);
@@ -36,16 +37,16 @@ class ProductController extends ChangeNotifier{
         }
         notifyListeners();
       } else {
-        error = data['response']['messages'][0]['message'];
+        message = data['response']['messages'][0]['message'];
       }
     } else {
-      error = responseGet.reasonPhrase.toString();
+      message = responseGet.reasonPhrase.toString();
       notifyListeners();
     }
 
     loading = false;
     products = _productsList;
     notifyListeners();
-    return products;
+    return message;
   }
 }
