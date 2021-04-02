@@ -1,7 +1,6 @@
 ## Getting Started
 
 Flutter version: 2.0.3
-Dart version: 3.21.1
 
 Download this Flutter project and open it in your favorite code editor;
 
